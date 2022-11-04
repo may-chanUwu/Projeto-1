@@ -1,0 +1,73 @@
+//- LCD
+#include <LiquidCrystal.h>
+LiquidCrystal lcd(13, 12, 4, 5, 6, 7);        //Configura os pinos RS, E, D4, D5, D6, D7
+//-
+void setup()
+{
+  lcd.begin(16,2);                              //Inicializando lcd 16x2
+}
+
+void loop()
+{
+  lcd.clear();                                  //limpa o lcd
+  delay(2);                                     //delay de 2ms
+  /*sensor de agua vê se há agua no recipiente
+  if(sensordeagua == 0){
+  lcd.setcursor(0,0);
+  lcd.print("não há agua no");
+  lcd.setcursor(1,0);
+  lcd.print("recipiente");
+  digitalWrite(Ledvm, HIGH);
+  delay(20);
+  digitalWrite(Ledvm, LOW);
+  delay(20);
+  }*/
+  lcd.setcursor(0,0);
+  lcd.print(" select options");
+  lcd.setcursor(1,0);
+  lcd.print("Temp: ");
+  lcd.setcursor(1, 11);
+  lcd.print("Umid: ");
+    switch (opcoes){
+      case opcao1:{
+        if(Umid >=40 && Umid <=60){
+        //sensor ultrassonico funciona ate 60% de umidade
+        }
+        lcd.setcursor(0,0)
+        lcd.print("opção 1");
+        lcd.setcursor(1,0);
+        lcd.print("Temp: ");
+        lcd.print("Umid: ");
+        break;
+       case opcao2:{
+        if(Umid >=60 && Umid <=80){
+        //sensor ultrassonico funciona ate 80% de umidade
+        }
+        lcd.setcursor(0,0)
+        lcd.print("opção 1");
+        lcd.setcursor(1,0);
+        lcd.print("Temp: ");
+        lcd.print("Umid: ");
+        break;
+       }
+       case opcao3:{
+        if(Umid >=40 && Umid <=80){
+        //sensor ultrassonico funciona ate 80% de umidade
+        }
+        lcd.setcursor(0,0)
+        lcd.print("opção 1");
+        lcd.setcursor(1,0);
+        lcd.print("Temp: ");
+        lcd.print("Umid: ");
+        break;
+       }
+      }
+  }
+  /*while(sensordeagua >= 1){
+  // sensores funcionando*
+  lcd.setcursor(0,0);
+  lcd.print("Temp: ", Temp);
+  lcd.setcursor(0, 11);
+  lcd.print("Umid: ", Umid);
+  }*/
+}
