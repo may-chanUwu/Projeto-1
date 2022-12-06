@@ -1,0 +1,71 @@
+#include <DHT.h>
+#define DHTPIN 9
+#define DHTTYPE DHT22
+DHT dht(DHTPIN, DHTTYPE);
+#define pinBotao 10
+#define rele 8
+#include <LiquidCrystal.h>
+LiquidCrystal lcd(2, 3, 4, 5, 6, 7);
+boolean botaoAtu;
+boolean botaoAnt;
+int LedVM = 11;
+int LedAM = 12;
+int LedVD = 13;
+int numero;
+void setup (){
+  dht.begin();
+  lcd.begin(16,2);
+  pinMode(pinBotao, INPUT);
+  pinMode(rele, OUTPUT);
+  pinMode(LedVM, OUTPUT);
+  pinMode(LedAM, OUTPUT);
+  pinMode(LedVD, OUTPUT);
+  botaoAnt = false;
+  botaoAtu = false;
+  int numero = 0;
+}
+void loop (){
+  float Umidade = dht.readHumidity();
+  float Temp = dht.readTemperature();
+  lcd.clear();
+  delay(2);
+  if (isnan(Umidade) || isnan(Temp)) {
+      lcd.setCursor(0,0);
+      lcd.print("Erro! Erro! Erro");
+      lcd.setCursor(0,1);
+      lcd.print("Aguarde");
+      lcd.setCursor(0,0);
+      lcd.print("Umid e Temp erro");
+      lcd.setCursor(0,1);
+      lcd.print("Reinicializando.");
+      digitalWrite(LedVM, HIGH);
+      delay(2000);
+      return;
+      }
+   if (botaoAtu && !botaoAnt) {
+     numero++;
+     if (numero > 2) {
+        numero = 0; 
+     }
+  }
+  botaoAnt = botaoAtu;
+  switch (numero) {
+     case 1:
+      if(Umidade <= 40 && Umidade <=60){
+        digitalWrite(rele,HIGH);
+        digitalWrite(LedVD, HIGH);
+      }
+      break;
+     case 2:
+      if(Umidade >= 60 && Umidade <=80){
+        digitalWrite(rele,HIGH);
+        digitalWrite(LedVD, HIGH);
+      }
+      break;
+     default:
+      digitalWrite(rele, LOW);
+      digitalWrite(LedVD, LOW);
+      digitalWrite(LedAM, HIGH);
+      break;  
+  }
+}
