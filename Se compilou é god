@@ -34,6 +34,7 @@ void loop (){
       lcd.print("Erro! Erro! Erro");
       lcd.setCursor(0,1);
       lcd.print("Aguarde");
+      delay(2000);
       lcd.setCursor(0,0);
       lcd.print("Umid e Temp erro");
       lcd.setCursor(0,1);
@@ -42,6 +43,11 @@ void loop (){
       delay(2000);
       return;
       }
+   lcd.setCursor(0,0);
+   lcd.print("Temp", Temp, "   Umid", Umidade);
+   lcd.setCursor(0,1);
+   lcd.print("Aguardando opção");
+   botaoAtu = digitalRead(pinBotao);
    if (botaoAtu && !botaoAnt) {
      numero++;
      if (numero > 2) {
