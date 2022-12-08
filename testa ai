@@ -23,6 +23,7 @@ void setup (){
   botaoAnt = false;                              //Começando com o botão
   botaoAtu = false;                              //estando desativado
   int numero = 0;                                //e a contagem de acionamentos também
+  Serial.begin(9600);
 }
 void loop (){
   float Umidade = dht.readHumidity();            //Colocando o valor da umidade em uma variavel
@@ -93,5 +94,11 @@ void loop (){
         delay(2000);
       break;                                     //Parar o default
   }
+  Serial.print("botao atual");
+   Serial.print(botaoAtu);
+  Serial.print("botao anterior");
+   Serial.print(botaoAnt);
+  Serial.print("botao numero");
+  Serial.print(numero);
   delay(2000);                                   //Delay de 2 segundos
 }
