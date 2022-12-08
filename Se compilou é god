@@ -1,9 +1,9 @@
 #include <DHT.h>                         //Incluindo a biblioteca para o sensor dht22
-#define DHTPIN 9                         //Definindo o pino do sensor de umidade
+#define DHTPIN 8                         //Definindo o pino do sensor de umidade
 #define DHTTYPE DHT22                            //Definindo o tipo de sensor (biblioteca tambem aceita o sensor dht11)
 DHT dht(DHTPIN, DHTTYPE);                        //Vinculando o sensor a biblioteca
 #define pinBotao 10                              //Definindo a constante do pino do botão
-#define rele 8                                   //Definindo a constante do pino do relé
+#define rele 9                                   //Definindo a constante do pino do relé
 #include <LiquidCrystal.h>                       //Incluindo a biblioteca do LCD
 LiquidCrystal lcd(2, 3, 4, 5, 6, 7);             //Definindo a pinagem do LCD
 boolean botaoAtu;                                //Definindo o tipo de variavel para 
@@ -35,6 +35,7 @@ void loop (){
       lcd.setCursor(0,1);                        //Coloca o cursor do LCD no (0,1)
       lcd.print("Aguarde");                      //Informa no LCD aguarde
       delay(2000);                               //Delay de 2 segundos
+      lcd.clear();
       lcd.setCursor(0,0);                        //Coloca o cursor do LCD no (0,0)
       lcd.print("Umid e Temp erro");             //Informa no LCD que a umidade e tempo deu erro
       lcd.setCursor(0,1);                        //Coloca o cursor do LCD no (0,1)
@@ -81,4 +82,5 @@ void loop (){
       digitalWrite(LedAM, HIGH);                 //O led amarelo liga para informar que o projeto está esperando a interação do usuario
       break;                                     //Parar o default
   }
+  delay(2000);                                   //Delay de 2 segundos
 }
