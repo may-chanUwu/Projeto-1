@@ -43,10 +43,12 @@ void loop (){
       delay(2000);                               //Delay de 2 segundos
       return;                                    //Retorna para fazer a leitura novamente
       }
-   lcd.setCursor(0,0);                    //Coloca o cursor do LCD no (0,0)
-   lcd.print("Temp", Temp, "   Umid", Umidade);  //Informa no LCD a temperatura e umidade
+   lcd.setCursor(0,0);                           //Coloca o cursor do LCD no (0,0)
+   lcd.print("Temp: ");                          //Informa no LCD a temperatura
+   lcd.print(Temp);                              //Informa no LCD a temperatura
    lcd.setCursor(0,1);                           //Coloca o cursor do LCD no (0,1)
-   lcd.print("Aguardando opção");                //Informa no LCD que está aguardando a opção que o usuario vai selecionar
+   lcd.print("Umid: ");                          //Informa no LCD a umidade
+   lcd.print(Umidade);                           //Informa no LCD a umidade
    botaoAtu = digitalRead(pinBotao);             //Armazenando a leitura digital do botão
    if (botaoAtu && !botaoAnt) {                  //Protocolo para ler o acionamento do botão
      numero++;                                   //Adiciona 1 a variavel para opções
@@ -73,7 +75,7 @@ void loop (){
         digitalWrite(LedVD, HIGH);               //Aciona o led verde informando que está funcionando 
       }
       break;                                     //Parar o caso 2
-     default                                     //Caso default caso o caso 0 não funcione
+     default:                                     //Caso default caso o caso 0 não funcione
       digitalWrite(rele, LOW);                   //O relé fica desligado
       digitalWrite(LedVD, LOW);                  //O led verde fica desligado
       digitalWrite(LedAM, HIGH);                 //O led amarelo liga para informar que o projeto está esperando a interação do usuario
