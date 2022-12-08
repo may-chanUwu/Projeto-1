@@ -56,6 +56,12 @@ void loop (){
   }
   botaoAnt = botaoAtu;
   switch (numero) {
+     case 0:
+          default:
+      digitalWrite(rele, LOW);
+      digitalWrite(LedVD, LOW);
+      digitalWrite(LedAM, HIGH);
+      break;
      case 1:
       if(Umidade <= 40 && Umidade <=60){
         digitalWrite(rele,HIGH);
