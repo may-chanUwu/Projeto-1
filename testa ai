@@ -61,31 +61,35 @@ void loop (){
   switch (numero) {                              //Caso das opções
      case 0:                                     //Caso o usuario não escolha nada 
    //   digitalWrite(rele, LOW);                   //O relé fica desligado
-      digitalWrite(LedVD, LOW);                  //O led verde fica desligado
-      digitalWrite(LedAM, HIGH);                 //O led amarelo liga para informar que o projeto está esperando a interação do usuario
-             digitalWrite(LedVM, HIGH);               //Aciona o led verde informando que está funcionando 
+       lcd.clear();
+        lcd.setCursor(0,1);
+        lcd.print("case 0");
+        delay(5000);
       break;                                     //Parar o caso 0
      case 1:                                     //Caso o botão for 1
       if(Umidade <= 40 && Umidade <=60){         //Protocolo para ligar o umidificador
      //   digitalWrite(rele,HIGH);                 //Aciona o relé
-        digitalWrite(LedVD, HIGH);               //Aciona o led verde informando que está funcionando 
-               digitalWrite(LedAM, LOW);               //Aciona o led verde informando que está funcionando 
-                      digitalWrite(LedVM, LOW);               //Aciona o led verde informando que está funcionando 
+         lcd.clear();
+        lcd.setCursor(0,1);
+        lcd.print("case 1");
+        delay(5000);
       }
       break;                                     //Parar o caso 1
      case 2:                                     //Caso o botão for 2
       if(Umidade >= 60 && Umidade <=80){         //Protocolo para ligar o umidificador
     //    digitalWrite(rele,HIGH);                 //Aciona o relé
-        digitalWrite(LedVD, LOW);               //Aciona o led verde informando que está funcionando 
-               digitalWrite(LedAM, HIGH);               //Aciona o led verde informando que está funcionando 
-                      digitalWrite(LedVM, LOW);               //Aciona o led verde informando que está funcionando 
+        lcd.clear();
+        lcd.setCursor(0,1);
+        lcd.print("case 2");
+        delay(5000);
       }
       break;                                     //Parar o caso 2
      default:                                     //Caso default caso o caso 0 não funcione
  //     digitalWrite(rele, LOW);                   //O relé fica desligado
-      digitalWrite(LedVD, LOW);                  //O led verde fica desligado
-      digitalWrite(LedAM, LOW);                 //O led amarelo liga para informar que o projeto está esperando a interação do usuario
-             digitalWrite(LedVM, HIGH);               //Aciona o led verde informando que está funcionando 
+       lcd.clear();
+        lcd.setCursor(0,1);
+        lcd.print("default");
+        delay(5000);
       break;                                     //Parar o default
   }
   delay(2000);                                   //Delay de 2 segundos
