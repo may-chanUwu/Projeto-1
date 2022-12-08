@@ -64,7 +64,7 @@ void loop (){
        lcd.clear();
         lcd.setCursor(0,1);
         lcd.print("case 0");
-        delay(5000);
+        delay(2000);
       break;                                     //Parar o caso 0
      case 1:                                     //Caso o botão for 1
       if(Umidade <= 40 && Umidade <=60){         //Protocolo para ligar o umidificador
@@ -72,8 +72,8 @@ void loop (){
          lcd.clear();
         lcd.setCursor(0,1);
         lcd.print("case 1");
-        delay(5000);
       }
+            delay(2000);
       break;                                     //Parar o caso 1
      case 2:                                     //Caso o botão for 2
       if(Umidade >= 60 && Umidade <=80){         //Protocolo para ligar o umidificador
@@ -81,15 +81,16 @@ void loop (){
         lcd.clear();
         lcd.setCursor(0,1);
         lcd.print("case 2");
-        delay(5000);
+        
       }
+      delay(2000);
       break;                                     //Parar o caso 2
      default:                                     //Caso default caso o caso 0 não funcione
  //     digitalWrite(rele, LOW);                   //O relé fica desligado
        lcd.clear();
         lcd.setCursor(0,1);
         lcd.print("default");
-        delay(5000);
+        delay(2000);
       break;                                     //Parar o default
   }
   delay(2000);                                   //Delay de 2 segundos
