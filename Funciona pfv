@@ -93,6 +93,7 @@ void loop (){
      digitalWrite(LedVM, HIGH);                           //nada
   }
   }
+   estado_BotaoAnt = estado_Botao;                          //Volta o o estado do botão ao normal
    delay(2000);                                           //Delay de 2 segundos
 }
 
